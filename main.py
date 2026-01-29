@@ -1,7 +1,15 @@
-from app.routes import missions
+
 from fastapi import FastAPI
+from app.routes.employees import employees_router
 from app.database import Database
+from app.routes import missions
+
 
 app = FastAPI()
-app.include_router(missions.router, prefix="/api")
+
 db = Database()
+
+app.include_router(employees_router)
+app.include_router(missions.router, prefix="/api")
+
+
