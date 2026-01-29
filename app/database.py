@@ -34,15 +34,16 @@ class Database:
     
     def init_sample_data(self):
         data = [
-            {"id": "1", "first_name": "Yossi", "last_name": "Rechdiner", "office_name": "kodkod", "job_title": "engineer"},
-            {"id": "2", "first_name": "Moshe", "last_name": "Elmaliach", "office_name": "kodkod", "job_title": "engineer"},
-            {"id": "2", "first_name": "Yossi", "last_name": "Kipper", "office_name": "kodkod", "job_title": "engineer"},
-            {"id": "2", "first_name": "Aharon", "last_name": "Segal", "office_name": "kodkod", "job_title": "engineer"}
+            {"first_name": "Yossi", "last_name": "Rechdiner", "office_name": "kodkod", "job_title": "engineer"},
+            {"first_name": "Moshe", "last_name": "Elmaliach", "office_name": "kodkod", "job_title": "engineer"},
+            {"first_name": "Yossi", "last_name": "Kipper", "office_name": "kodkod", "job_title": "engineer"},
+            {"first_name": "Aharon", "last_name": "Segal", "office_name": "kodkod", "job_title": "engineer"}
         ]
         employees = []
         for employee in data:
-            new_employee = Employee(**employee)
-            employees.append(new_employee)
+            new_employee = EmployeeCreate(**employee)
+            employee_obj = Employee(**new_employee)
+            employees.append(employee_obj)
         return employees
 
     def to_dict(self) -> List[dict]:

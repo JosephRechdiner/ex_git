@@ -1,6 +1,7 @@
 from typing import Optional
 from pydantic import BaseModel
 from datetime import datetime
+import uuid
 
 class EmployeeBase(BaseModel):
     first_name: str
@@ -9,7 +10,7 @@ class EmployeeBase(BaseModel):
     job_title: str
 
 class EmployeeCreate(EmployeeBase):
-    id: str
+    id: str = uuid.UUID
 
 class EmployeeUpdate(BaseModel):
     first_name: Optional[str]
