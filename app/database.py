@@ -1,3 +1,4 @@
+
 from datetime import datetime
 from typing import List, Optional
 from app.models import Employee, EmployeeCreate, EmployeeUpdate
@@ -48,6 +49,27 @@ class Database:
 
     def to_dict(self) -> List[dict]:
         return [employee.to_dict() for employee in self.employees]
-
+    
+    def add_mission(self,mission:Mission)-> Mission:
+        self.missions.append(mission)
         
- 
+    def get_all_missions(self) -> List[Mission]:
+        return self.missions
+    
+    def get_mission_by_id(self,mission_id:str)-> Optional[Mission]:
+        for mission in self.missions:
+            if mission_id == mission.id:
+                return mission
+        return None
+    
+    def get_missions_by_employee(self,emp_id:str) -> List[Mission]:
+        for mission in self.missions:
+            if mission.assigned_to == emp_id:
+                return mission
+        return None
+    def update_mission(mission_id, data) -> Optional[Mission]:
+        pass
+    def delete_mission(mission_id) -> bool:
+        pass
+
+
